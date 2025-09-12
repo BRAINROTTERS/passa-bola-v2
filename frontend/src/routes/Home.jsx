@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="bg-black text-white">
       <Hero />
-      <section className="p-8">
+      <section className="p-10">
         
         <div className="mt-6">
           <Noticias />

@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
+import logo from "../assets/shortcuticonpassaabola.png"
 
+const marca = [
+   { id: 5, name: "logo-marca", img: logo }
+]
 export default function Navbar() {
   return (
-    <nav className="bg-black text-white px-6 py-4 flex justify-between items-center shadow-md">
+    <nav className="bg-transparent text-white flex px-10 py-6 justify-between items-center  fixed top-0 left-0 w-full z-10">
       {/* Logo */}
-      <Link to="/" className="text-xl font-bold text-purple-400 hover:text-pink-500">
-        Passa a Bola
+      <Link to="/" className="text-xl font-bold text-purple-400 hover:">
+          <img className="w-20 rounded-full hover:opacity-70" src={marca[0].img} alt={marca[0].name} />
       </Link>
 
       {/* Links */}
@@ -16,7 +20,7 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
-          <a href="#noticias" className="hover:text-pink-500">
+          <a href="#noticias" className="hover:text-pink-500  ">
             Notícias
           </a>
         </li>
