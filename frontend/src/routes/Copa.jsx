@@ -41,13 +41,13 @@ const Copa = () => {
       >
         <div className="absolute inset-0 bg-black opacity-60"></div>
         <div className="relative z-10 max-w-2xl">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Copa Passa Bola</h1>
-          <p className="text-lg md:text-xl text-gray-300 mb-8">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 surge-text">Copa Passa Bola</h1>
+          <p className="text-lg md:text-xl text-gray-300 mb-8 surge-text">
             Participe do torneio de futebol feminino fut-7 da Passa Bola! Junte-se a uma comunidade de jogadoras e mostre seu talento em campo. Inscrições abertas para times e jogadoras solo.
           </p>
           <button 
             onClick={handleScrollToForm} 
-            className="bg-purple-600 hover:bg-purple-700 transition duration-300 ease-in-out text-white font-bold py-3 px-8 rounded-full shadow-lg"
+            className="bg-purple-600 hover:bg-purple-700 transition duration-300 ease-in-out text-white font-bold py-3 px-8 rounded-full shadow-lg surge-text"
           >
             Inscrever-se na Copa
           </button>

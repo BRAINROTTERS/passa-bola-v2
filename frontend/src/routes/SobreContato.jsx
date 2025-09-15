@@ -6,11 +6,11 @@ export default function SobreContato() {
       <section className="min-h-screen flex flex-col items-center justify-center px-6 text-center bg-cover 
       " style={{ backgroundImage: "url('/imagemfundosobrepassaabola.jpg')" }}>
         
-        <h1 className="text-4xl md:text-5xl font-bold">
+        <h1 className="text-4xl md:text-5xl font-bold surge-text">
           Conheça um pouco mais <span className="text-pink-500">sobre nós!</span>
         </h1>
         
-        <p className="mt-6 max-w-2xl text-lg text-gray-300">
+        <p className="mt-6 max-w-2xl text-lg text-gray-300 surge-text">
           O <span className="text-purple-400">Passa a Bola</span> nasceu para trazer notícias,
           análises e destaques do futebol feminino, mostrando sua força e inspiração.
         </p>

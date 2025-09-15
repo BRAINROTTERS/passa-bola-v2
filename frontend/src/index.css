@@ -1,1 +1,24 @@
 @import "tailwindcss";
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* O texto começa um pouco abaixo */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* O texto se move para a posição normal */
+  }
+}
+
+.surge-text {
+  animation: fadeInUp 2s ease-out forwards;
+}
