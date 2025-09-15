@@ -1,9 +1,10 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Noticias from "./components/Noticias";
+
 import Footer from "./components/Footer";
 import SobreContato from "./routes/SobreContato";
 import { Routes, Route } from "react-router-dom";
+import Copa from "./routes/Copa";
 import Home from "./routes/Home"; 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
             <Route path="/" element={<Home />} />       
             <Route path="/home" element={<Home />} />
             <Route path="/sobrecontato" element={<SobreContato />} />
-            
+            <Route path="/copa" element={<Copa />} />
 
           </Routes>
           

@@ -19,11 +19,7 @@ export default function Navbar() {
             Home
           </Link>
         </li>
-        <li>
-          <a href="#noticias" className="hover:text-pink-500  ">
-            Notícias
-          </a>
-        </li>
+        
         <li>
           <Link to="SobreContato" className="hover:text-pink-500">
             Sobre nós
