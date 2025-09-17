@@ -1,12 +1,23 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Projeto Calculadora CP4 WEB E FRONT 
+# GRUPO BRAINROTTERS
 
-Currently, two official plugins are available:
+## Integrantes
+- RM 12345 - Rafael Moraes Ribeiro dos Santos
+- RM 562112 - Guilherme Andrade Amaral
+- RM 562541- Enrico Bagli Borges
+- RM 562543- João Victor Cazarini del Bello
+- RM 561292- Matheus Antunes Monreal
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Sobre o projeto
+Projeto usando React e Vite para a Passa bola da Ale Xavier e Luana Maluf.
+## Links
+- Repositório GitHub: (https://github.com/BRAINROTTERS/passa-bola-v2)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Como rodar o projeto
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/BRAINROTTERS/passa-bola-v2
+
