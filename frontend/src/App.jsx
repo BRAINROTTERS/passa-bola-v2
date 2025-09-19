@@ -6,6 +6,7 @@ import SobreContato from "./routes/SobreContato";
 import { Routes, Route } from "react-router-dom";
 import Copa from "./routes/Copa";
 import Home from "./routes/Home"; 
+import ChaveamentoPage from "./routes/ChaveamentoPage";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/sobrecontato" element={<SobreContato />} />
             <Route path="/copa" element={<Copa />} />
-
+            <Route path="/chaveamento" element={<ChaveamentoPage />} />
+            
           </Routes>
           
         </main>

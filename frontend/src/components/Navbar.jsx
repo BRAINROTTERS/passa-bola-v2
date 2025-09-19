@@ -30,6 +30,11 @@ export default function Navbar() {
             Copa
           </Link>
         </li>
+        <li>
+          <Link to="/chaveamento" className="hover:text-pink-500">
+            Chaveamento e Partidas
+          </Link>
+        </li>
         
       </ul>
     </nav>

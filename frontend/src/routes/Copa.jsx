@@ -25,11 +25,47 @@ const Copa = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Dados de Inscrição:', formData, 'Tipo:', enrollmentType);
-    // Aqui você adicionaria a lógica para enviar os dados para o backend
-    alert('Inscrição enviada com sucesso!');
+    
+    // Constrói o objeto de dados com base no tipo de inscrição
+    const dataToSend = enrollmentType === 'create' ? {
+      ...formData,
+      teamName: formData.teamName,
+      isNewTeam: true
+    } : {
+      ...formData,
+      isNewTeam: false
+    };
+
+    try {
+      const response = await fetch('http://localhost:3000/api/inscricoes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToSend),
+      });
+
+      if (response.ok) {
+        alert('Inscrição enviada com sucesso!');
+        // Opcional: Limpar formulário
+        setFormData({
+          name: '',
+          surname: '',
+          cpf: '',
+          position: '',
+          jerseyNumber: '',
+          teamName: '',
+          teamPhoto: null,
+        });
+      } else {
+        alert('Falha ao enviar inscrição.');
+      }
+    } catch (error) {
+      console.error('Erro de rede:', error);
+      alert('Erro ao conectar com o servidor.');
+    }
   };
 
   return (
@@ -41,13 +77,13 @@ const Copa = () => {
       >
         <div className="absolute inset-0 bg-black opacity-60"></div>
         <div className="relative z-10 max-w-2xl">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 surge-text">Copa Passa Bola</h1>
-          <p className="text-lg md:text-xl text-gray-300 mb-8 surge-text">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Copa Passa Bola</h1>
+          <p className="text-lg md:text-xl text-gray-300 mb-8">
             Participe do torneio de futebol feminino fut-7 da Passa Bola! Junte-se a uma comunidade de jogadoras e mostre seu talento em campo. Inscrições abertas para times e jogadoras solo.
           </p>
           <button 
             onClick={handleScrollToForm} 
-            className="bg-purple-600 hover:bg-purple-700 transition duration-300 ease-in-out text-white font-bold py-3 px-8 rounded-full shadow-lg surge-text"
+            className="bg-purple-600 hover:bg-purple-700 transition duration-300 ease-in-out text-white font-bold py-3 px-8 rounded-full shadow-lg"
           >
             Inscrever-se na Copa
           </button>
@@ -116,8 +152,8 @@ const Copa = () => {
             <div className="space-y-4">
               <input type="text" name="teamName" value={formData.teamName} onChange={handleChange} placeholder="Nome do seu novo time" className="form-input bg-gray-700 text-white border border-gray-600 rounded-lg p-3 w-full" required />
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">Foto do time:</label>
-                <input type="file" name="teamPhoto" onChange={handleChange} className="form-input bg-gray-700 text-white border border-gray-600 rounded-lg p-3 w-full" />
+                <label className="block text-sm font-medium text-gray-400 mb-2">URL da Foto do time:</label>
+                <input type="url" name="teamPhotoUrl" value={formData.teamPhotoUrl} onChange={handleChange} placeholder="https://exemplo.com/logo.png" className="form-input bg-gray-700 text-white border border-gray-600 rounded-lg p-3 w-full" />
               </div>
               <p className="text-gray-400 mt-6 font-bold">Dados da Capitã (Você):</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
