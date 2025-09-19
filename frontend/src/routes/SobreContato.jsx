@@ -5,6 +5,8 @@ export default function SobreContato() {
       
       <section className="min-h-screen flex flex-col items-center justify-center px-6 text-center bg-cover 
       " style={{ backgroundImage: "url('/imagemfundosobrepassaabola.jpg')" }}>
+
+        <div className="absolute inset-0 bg-black opacity-60"></div>
         
         <h1 className="text-4xl md:text-5xl font-bold surge-text">
           Conheça um pouco mais <span className="text-pink-500">sobre nós!</span>
