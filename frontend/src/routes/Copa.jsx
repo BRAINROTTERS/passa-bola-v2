@@ -1,8 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const Copa = () => {
   const formRef = useRef(null);
   const [enrollmentType, setEnrollmentType] = useState('join');
+  const [timesCriados, setTimesCriados] = useState([]); // Novo estado para armazenar os times
   const [formData, setFormData] = useState({
     name: '',
     surname: '',
@@ -10,18 +11,38 @@ const Copa = () => {
     position: '',
     jerseyNumber: '',
     teamName: '',
-    teamPhoto: null,
+    teamPhotoUrl: '', // O campo de foto agora é uma URL
   });
+
+  // useEffect para buscar os times do backend
+  useEffect(() => {
+    const fetchTimes = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/api/inscricoes');
+        if (!response.ok) {
+          throw new Error('Falha ao carregar os times.');
+        }
+        const inscricoes = await response.json();
+        // Filtra apenas os times que foram criados (com isNewTeam: true)
+        const timesUnicos = inscricoes.filter(inscricao => inscricao.isNewTeam);
+        setTimesCriados(timesUnicos);
+      } catch (error) {
+        console.error('Erro ao buscar times:', error);
+      }
+    };
+
+    fetchTimes();
+  }, []);
 
   const handleScrollToForm = () => {
     formRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
+    const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
-      [name]: files ? files[0] : value
+      [name]: value
     }));
   };
 
@@ -31,7 +52,6 @@ const Copa = () => {
     // Constrói o objeto de dados com base no tipo de inscrição
     const dataToSend = enrollmentType === 'create' ? {
       ...formData,
-      teamName: formData.teamName,
       isNewTeam: true
     } : {
       ...formData,
@@ -49,7 +69,6 @@ const Copa = () => {
 
       if (response.ok) {
         alert('Inscrição enviada com sucesso!');
-        // Opcional: Limpar formulário
         setFormData({
           name: '',
           surname: '',
@@ -57,7 +76,7 @@ const Copa = () => {
           position: '',
           jerseyNumber: '',
           teamName: '',
-          teamPhoto: null,
+          teamPhotoUrl: '',
         });
       } else {
         alert('Falha ao enviar inscrição.');
@@ -79,7 +98,7 @@ const Copa = () => {
         <div className="relative z-10 max-w-2xl">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">Copa Passa Bola</h1>
           <p className="text-lg md:text-xl text-gray-300 mb-8">
-            Participe do torneio de futebol feminino fut-7 da Passa Bola! Junte-se a uma comunidade de jogadoras e mostre seu talento em campo. Inscrições abertas para times e jogadoras solo.
+            Participe do torneio de futebol feminino fut-7 da Passa Bola!
           </p>
           <button 
             onClick={handleScrollToForm} 
@@ -139,9 +158,9 @@ const Copa = () => {
                 <label className="block text-sm font-medium text-gray-400 mb-2">Escolha seu time:</label>
                 <select name="teamName" value={formData.teamName} onChange={handleChange} className="form-select bg-gray-700 text-white border border-gray-600 rounded-lg p-3 w-full" required>
                   <option value="">-- Selecione um time --</option>
-                  <option value="Time A">Time A - As Guerreiras</option>
-                  <option value="Time B">Time B - Estrelas do Fut</option>
-                  <option value="Time C">Time C - As Feras</option>
+                  {timesCriados.map(time => (
+                    <option key={time.id} value={time.teamName}>{time.teamName}</option>
+                  ))}
                 </select>
               </div>
             </div>
